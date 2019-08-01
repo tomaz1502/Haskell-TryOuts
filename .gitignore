@@ -1,1 +1,3 @@
-ig
+*.gi
+*.o
+matrixmul.hs
