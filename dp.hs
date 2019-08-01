@@ -39,3 +39,11 @@ dis s t = dp ls lt
         s'                     = listArray (1, ls) s
         t'                     = listArray (1, lt) t
         memo = listArray ((0, 0) , (ls, lt)) [(dp i j) | i <- [0..ls] , j <- [0..lt]]
+
+-- We can improve this solution, by making the function output the list
+-- of actions needed to turn one string into another
+
+data Action = Maintain | Insert | Remove | Modify
+
+main :: IO()
+main = print (dis "aaa" "bbb")
