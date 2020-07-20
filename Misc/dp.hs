@@ -15,12 +15,12 @@ fib n = fibs !! n
 
 -- -- This is fine, but generally, it will work better with Arrays:
 
-fib_arr :: Int -> Int
-fib_arr n = dp n
+fibArr :: Int -> Int
+fibArr n = dp n
     where dp 0 = 0
           dp 1 = 1
           dp n = fibs ! (n - 1) + fibs ! (n - 2)
-          fibs = listArray (0, n) [fib_arr i | i <- [0..n]]
+          fibs = listArray (0, n) [fibArr i | i <- [0..n]]
 
 -- Now, we will implement string distance. One can read about the problem and
 -- it's solution on the link on the first line. Here we will focus only on it's
@@ -38,7 +38,7 @@ dis s t = dp ls lt
         lt = length t
         s'                     = listArray (1, ls) s
         t'                     = listArray (1, lt) t
-        memo = listArray ((0, 0) , (ls, lt)) [(dp i j) | i <- [0..ls] , j <- [0..lt]]
+        memo = listArray ((0, 0) , (ls, lt)) [dp i j | i <- [0..ls] , j <- [0..lt]]
 
 -- We can improve this solution, by making the function output the list
 -- of actions needed to turn one string into another
