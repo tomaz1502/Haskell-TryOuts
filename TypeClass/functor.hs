@@ -32,8 +32,8 @@ instance Functor ITree where
     (<$>) f (Leaf g)  = Leaf (f . g)
     (<$>) f (Node xs) = Node (map (f <$>) xs)
 
-newtype Wot a = X (a -> Int)
-instance Functor Wot where
+newtype Wot c a = X (a -> c)
+instance Functor (Wot c) where
     (<$>) f (X g) = undefined -- this type can't have an instance of Functor!
 
 
